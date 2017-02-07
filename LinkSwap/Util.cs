@@ -12,18 +12,57 @@ namespace LinkSwap
         public string GET(string url)
         {
             Console.WriteLine(url);
+            var encoding = new UTF8Encoding(false);
             try
             {
                 WebClient myWebClient = new WebClient();
                 byte[] myDataBuffer = myWebClient.DownloadData(url);
-                string str = Encoding.UTF8.GetString(myDataBuffer);
+                //string str = Encoding.UTF8.GetString(myDataBuffer);
+                string str = GetNoBomUTF8String(myDataBuffer);
                 return str;
             }
             catch { }
             return null;
         }
 
-      
+        public bool Exist(string url ,string key)
+        {
+            string res = GET(url);
+            if (res != null && res.IndexOf(key) > -1)
+            {
+                return true;
+            }
+            else return false;
+
+    
+        }
+
+        public static string GetNoBomUTF8String(byte[] buffer)
+        {
+            if (buffer == null) return null;
+            if (buffer.Length <= 3)
+            {
+                return Encoding.UTF8.GetString(buffer);
+            }
+            byte[] bomBuffer = new byte[] { 0xef, 0xbb, 0xbf };
+            if (buffer[0] == bomBuffer[0] && buffer[1] == bomBuffer[1] && buffer[2] == bomBuffer[2])
+            {
+                return new UTF8Encoding(false).GetString(buffer, 3, buffer.Length - 3);
+            }
+            return Encoding.UTF8.GetString(buffer);
+        }
+
+        public static string RemoveBom(String desc, Encoding encode)
+        {
+            string bomString = encode.GetString(encode.GetPreamble());
+            if (!string.IsNullOrEmpty(bomString) && desc.StartsWith(bomString))
+            {
+                desc = desc.Remove(0, bomString.Length);
+            }
+            return desc;
+        }
+
+
         public string GetTimeStamp(bool bflag = false)
         {
             TimeSpan ts = DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0);

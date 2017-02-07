@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace LinkSwap
@@ -27,6 +28,10 @@ namespace LinkSwap
         {
             txt_user.Text = user;
             txt_pw.Text = pw;
+        }
+        public static bool IsNumeric(string value)
+        {
+            return Regex.IsMatch(value, @"^[+-]?\d*[.]?\d*$");
         }
 
         private void btn_reg_Click(object sender, EventArgs e)
@@ -57,7 +62,7 @@ namespace LinkSwap
 
         private bool CheckInput()
         {
-            if (txt_user.TextLength == 0|| txt_pw.TextLength == 0||txt_pw2.TextLength==0||txt_email.TextLength==0||txt_phone.TextLength==0||txt_qq.TextLength==0||txt_alipay.TextLength==0)
+            if (txt_user.TextLength == 0|| txt_pw.TextLength == 0||txt_pw2.TextLength==0||txt_email.TextLength==0||txt_phone.TextLength==0||txt_qq.TextLength==0)
             {
                 MessageBox.Show("不能为空");
                 return false;
@@ -65,7 +70,20 @@ namespace LinkSwap
             {
                 MessageBox.Show("密码不一致");
                 return false;
+            }else if (txt_email.Text.IndexOf("@") < 0)
+            {
+                MessageBox.Show("邮箱格式不正确");
+                return false;
+            }else if (txt_phone.TextLength != 11 && IsNumeric(txt_phone.Text))
+            {
+                MessageBox.Show("手机格式不正确");
+                return false;
+            }else if (!IsNumeric(txt_qq.Text))
+            {
+                MessageBox.Show("QQ格式错误");
+                return false;
             }
+
             return true;
         }
     }

@@ -41,7 +41,7 @@
             this.cb_se = new System.Windows.Forms.ComboBox();
             this.label12 = new System.Windows.Forms.Label();
             this.txt_search_num = new System.Windows.Forms.TextBox();
-            this.cb_target_link_type = new System.Windows.Forms.ComboBox();
+            this.cb_target_link_loc = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
             this.cb_wt_type = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -56,6 +56,7 @@
             this.nud_point = new System.Windows.Forms.NumericUpDown();
             this.label8 = new System.Windows.Forms.Label();
             this.btn_update_site = new System.Windows.Forms.Button();
+            this.label13 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.swap_group.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nud_wt)).BeginInit();
@@ -65,6 +66,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label13);
             this.groupBox1.Controls.Add(this.cb_link_loc);
             this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.cb_site_class);
@@ -198,7 +200,7 @@
             this.swap_group.Controls.Add(this.cb_se);
             this.swap_group.Controls.Add(this.label12);
             this.swap_group.Controls.Add(this.txt_search_num);
-            this.swap_group.Controls.Add(this.cb_target_link_type);
+            this.swap_group.Controls.Add(this.cb_target_link_loc);
             this.swap_group.Controls.Add(this.label11);
             this.swap_group.Controls.Add(this.cb_wt_type);
             this.swap_group.Controls.Add(this.label9);
@@ -244,19 +246,19 @@
             this.txt_search_num.Text = "0";
             this.txt_search_num.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // cb_target_link_type
+            // cb_target_link_loc
             // 
-            this.cb_target_link_type.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cb_target_link_type.FormattingEnabled = true;
-            this.cb_target_link_type.Items.AddRange(new object[] {
+            this.cb_target_link_loc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cb_target_link_loc.FormattingEnabled = true;
+            this.cb_target_link_loc.Items.AddRange(new object[] {
             "不限制",
             "首页",
             "二级域名",
             "栏目"});
-            this.cb_target_link_type.Location = new System.Drawing.Point(74, 97);
-            this.cb_target_link_type.Name = "cb_target_link_type";
-            this.cb_target_link_type.Size = new System.Drawing.Size(70, 20);
-            this.cb_target_link_type.TabIndex = 19;
+            this.cb_target_link_loc.Location = new System.Drawing.Point(74, 97);
+            this.cb_target_link_loc.Name = "cb_target_link_loc";
+            this.cb_target_link_loc.Size = new System.Drawing.Size(70, 20);
+            this.cb_target_link_loc.TabIndex = 19;
             // 
             // label11
             // 
@@ -272,8 +274,8 @@
             this.cb_wt_type.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cb_wt_type.FormattingEnabled = true;
             this.cb_wt_type.Items.AddRange(new object[] {
-            "百度",
-            "Google"});
+            "爱站",
+            "站长"});
             this.cb_wt_type.Location = new System.Drawing.Point(74, 64);
             this.cb_wt_type.Name = "cb_wt_type";
             this.cb_wt_type.Size = new System.Drawing.Size(74, 20);
@@ -305,9 +307,9 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(15, 67);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(47, 12);
+            this.label5.Size = new System.Drawing.Size(53, 12);
             this.label5.TabIndex = 8;
-            this.label5.Text = "权重/PR";
+            this.label5.Text = "网站权重";
             // 
             // cb_target_site_class
             // 
@@ -445,6 +447,16 @@
             this.btn_update_site.UseVisualStyleBackColor = false;
             this.btn_update_site.Click += new System.EventHandler(this.btn_update_site_Click);
             // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.ForeColor = System.Drawing.Color.Red;
+            this.label13.Location = new System.Drawing.Point(196, 82);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(107, 12);
+            this.label13.TabIndex = 8;
+            this.label13.Text = "(不需要加http://)";
+            // 
             // SiteForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -459,6 +471,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "网站信息";
             this.Load += new System.EventHandler(this.SiteForm_Load);
+            this.Shown += new System.EventHandler(this.SiteForm_Shown);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.swap_group.ResumeLayout(false);
@@ -498,8 +511,9 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox txt_search_num;
-        private System.Windows.Forms.ComboBox cb_target_link_type;
+        private System.Windows.Forms.ComboBox cb_target_link_loc;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.ComboBox cb_se;
+        private System.Windows.Forms.Label label13;
     }
 }

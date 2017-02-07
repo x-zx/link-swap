@@ -30,6 +30,7 @@
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.lb_ver = new System.Windows.Forms.Label();
+            this.lb_forget_pw = new System.Windows.Forms.LinkLabel();
             this.cb_save_pw = new System.Windows.Forms.CheckBox();
             this.btn_reg = new System.Windows.Forms.Button();
             this.btn_login = new System.Windows.Forms.Button();
@@ -37,6 +38,7 @@
             this.txt_user = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.lb_copyright = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -54,11 +56,13 @@
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.splitContainer1.Panel1.Controls.Add(this.lb_copyright);
             this.splitContainer1.Panel1.Controls.Add(this.lb_ver);
             // 
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.BackColor = System.Drawing.SystemColors.Control;
+            this.splitContainer1.Panel2.Controls.Add(this.lb_forget_pw);
             this.splitContainer1.Panel2.Controls.Add(this.cb_save_pw);
             this.splitContainer1.Panel2.Controls.Add(this.btn_reg);
             this.splitContainer1.Panel2.Controls.Add(this.btn_login);
@@ -77,11 +81,25 @@
             this.lb_ver.AutoSize = true;
             this.lb_ver.BackColor = System.Drawing.Color.Transparent;
             this.lb_ver.ForeColor = System.Drawing.Color.Gray;
-            this.lb_ver.Location = new System.Drawing.Point(331, 66);
+            this.lb_ver.Location = new System.Drawing.Point(12, 66);
             this.lb_ver.Name = "lb_ver";
             this.lb_ver.Size = new System.Drawing.Size(47, 12);
             this.lb_ver.TabIndex = 10;
             this.lb_ver.Text = "0.0.0.0";
+            this.lb_ver.Visible = false;
+            // 
+            // lb_forget_pw
+            // 
+            this.lb_forget_pw.ActiveLinkColor = System.Drawing.Color.Red;
+            this.lb_forget_pw.AutoSize = true;
+            this.lb_forget_pw.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.lb_forget_pw.Location = new System.Drawing.Point(176, 96);
+            this.lb_forget_pw.Name = "lb_forget_pw";
+            this.lb_forget_pw.Size = new System.Drawing.Size(53, 12);
+            this.lb_forget_pw.TabIndex = 9;
+            this.lb_forget_pw.TabStop = true;
+            this.lb_forget_pw.Text = "忘记密码";
+            this.lb_forget_pw.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lb_forget_pw_LinkClicked);
             // 
             // cb_save_pw
             // 
@@ -156,6 +174,17 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "用户名";
             // 
+            // lb_copyright
+            // 
+            this.lb_copyright.AutoSize = true;
+            this.lb_copyright.ForeColor = System.Drawing.Color.DarkGray;
+            this.lb_copyright.Location = new System.Drawing.Point(192, 66);
+            this.lb_copyright.Name = "lb_copyright";
+            this.lb_copyright.Size = new System.Drawing.Size(107, 12);
+            this.lb_copyright.TabIndex = 10;
+            this.lb_copyright.Text = "软件著作权 123456";
+            this.lb_copyright.Click += new System.EventHandler(this.lb_copyright_Click);
+            // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -164,8 +193,9 @@
             this.Controls.Add(this.splitContainer1);
             this.Name = "LoginForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "用户登录";
+            this.Text = "换链宝";
             this.Load += new System.EventHandler(this.LoginForm_Load);
+            this.Shown += new System.EventHandler(this.LoginForm_Shown);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
@@ -187,5 +217,7 @@
         private System.Windows.Forms.Button btn_reg;
         private System.Windows.Forms.CheckBox cb_save_pw;
         private System.Windows.Forms.Label lb_ver;
+        private System.Windows.Forms.LinkLabel lb_forget_pw;
+        private System.Windows.Forms.Label lb_copyright;
     }
 }
